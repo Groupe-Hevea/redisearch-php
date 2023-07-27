@@ -2,11 +2,9 @@
 
 namespace Ehann\RediSearch\Document;
 
-use AllowDynamicProperties;
 use Ehann\RediSearch\Exceptions\OutOfRangeDocumentScoreException;
 use Ehann\RediSearch\Fields\FieldInterface;
 
-#[AllowDynamicProperties]
 class Document implements DocumentInterface
 {
     protected $id;

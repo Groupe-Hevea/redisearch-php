@@ -212,7 +212,7 @@ class Builder implements BuilderInterface
                 $this->explodeArgument($this->scorer),
                 $this->explodeArgument($this->language),
                 $this->explodeArgument($this->expander),
-                $this->explodeArgument($this->payload),
+                $this->explodeArgument($this->payload)
             ),
             function ($item) {
                 return !is_null($item) && $item !== '';
