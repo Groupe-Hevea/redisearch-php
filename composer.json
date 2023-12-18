@@ -22,8 +22,8 @@
     "prefer-stable": true,
     "require": {
         "php": ">=8.2",
-        "psr/log": "^3.0.0",
-        "ethanhann/redis-raw": "^2.1.0"
+        "psr/log": "^1.0",
+        "ethanhann/redis-raw": "dev-main as 2.1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5.23",
@@ -34,5 +34,11 @@
         "monolog/monolog": "^3.2.0",
         "ukko/phpredis-phpdoc": "^5.0@beta",
         "cheprasov/php-redis-client": "^1.9"
-    }
+    },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "git@github.com:Groupe-Hevea/redis-raw-php.git"
+        }
+    ]
 }

@@ -2,6 +2,7 @@
 
 namespace Ehann\RediSearch;
 
+use AllowDynamicProperties;
 use Ehann\RediSearch\Aggregate\Builder as AggregateBuilder;
 use Ehann\RediSearch\Aggregate\BuilderInterface as AggregateBuilderInterface;
 use Ehann\RediSearch\Document\AbstractDocumentFactory;
@@ -19,6 +20,7 @@ use Ehann\RediSearch\Query\SearchResult;
 use Ehann\RedisRaw\Exceptions\RawCommandErrorException;
 use RedisException;
 
+#[AllowDynamicProperties]
 class Index extends AbstractIndex implements IndexInterface
 {
     /** @var bool */
@@ -160,11 +162,18 @@ class Index extends AbstractIndex implements IndexInterface
     }
 
     /**
+     * @param bool $deleteDocument
+     *
      * @return mixed
      */
-    public function drop()
+    public function drop(bool $deleteDocument = true)
     {
-        return $this->rawCommand('FT.DROP', [$this->getIndexName()]);
+        $arguments = [$this->getIndexName()];
+        if ($deleteDocument) {
+            $arguments[] = 'DD';
+        }
+
+        return $this->rawCommand('FT.DROPINDEX', $arguments);
     }
 
     /**
